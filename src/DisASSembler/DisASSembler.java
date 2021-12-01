@@ -108,7 +108,7 @@ public class DisASSembler {
             f.delete();
             //ASE File Writer
             FileOutputStream outputStream = new FileOutputStream(f);
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream, "UTF-16");
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream, "UTF-8");
             BufferedWriter bw = new BufferedWriter(outputStreamWriter);
 
             raf.read(magicNumbers,0,6);
@@ -191,43 +191,43 @@ public class DisASSembler {
                     tempInt = raf.readByte();
                     switch (tempInt){
                         case NOP:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("NOP");
                             bw.newLine();
                             break;
                         case ADD:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("ADD");
                             bw.newLine();
                             break;
                         case SUB:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("SUB");
                             bw.newLine();
                             break;
                         case MULT:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("MULT");
                             bw.newLine();
                             break;
                         case DIV:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("DIV");
                             bw.newLine();
                             break;
                         case MOD:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("MOD");
                             bw.newLine();
                             break;
                         case INC:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("INC ");
                             dir = raf.readShort();
@@ -240,7 +240,7 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case DEC:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("DEC ");
                             dir = raf.readShort();
@@ -253,71 +253,71 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case CMPEQ:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("CMPEQ");
                             bw.newLine();
                             break;
                         case CMPNE:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("CMPNE");
                             bw.newLine();
                             break;
                         case CMPLT:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("CMPLT");
                             bw.newLine();
                             break;
                         case CMPLE:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("CMPLE");
                             bw.newLine();
                             break;
                         case CMPGT:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("CMPGT");
                             bw.newLine();
                             break;
                         case CMPGE:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("CMPGE");
                             bw.newLine();
                             break;
                             // Que hacer con labels
                         case JMP:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("JMP ");
                             dir = raf.readShort();
-                            bw.write(Integer.toString(dir));
+                            bw.write("e"+Integer.toString(dir));
                             pc+=2;
                             bw.newLine();
                             break;
                         case JMPT:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("JMPT ");
                             dir = raf.readShort();
-                            bw.write(Integer.toString(dir));
+                            bw.write("e"+Integer.toString(dir));
                             pc+=2;
                             bw.newLine();
                             break;
                         case JMPF:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("JMPF ");
                             dir = raf.readShort();
-                            bw.write(Integer.toString(dir));
+                            bw.write("e"+Integer.toString(dir));
                             pc+=2;
                             bw.newLine();
                             break;
                         case SETIDX:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("SETIDX ");
                             dir = raf.readShort();
@@ -330,7 +330,7 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case SETIDXK:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("SETIDXK ");
                             dir = raf.readInt();
@@ -339,7 +339,7 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case PUSHI:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("PUSHI ");
                             dir = raf.readShort();
@@ -352,7 +352,7 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case PUSHD:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("PUSHD ");
                             dir = raf.readShort();
@@ -365,7 +365,7 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case PUSHS:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("PUSHS ");
                             dir = raf.readShort();
@@ -378,7 +378,7 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case PUSHAI:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("PUSHAI ");
                             dir = raf.readShort();
@@ -391,7 +391,7 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case PUSHAD:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("PUSHAD ");
                             dir = raf.readShort();
@@ -404,7 +404,7 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case PUSHAS:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("PUSHAS ");
                             dir = raf.readShort();
@@ -417,7 +417,7 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case PUSHKI:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("PUSHKI ");
                             dir = raf.readInt();
@@ -426,7 +426,7 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case PUSHKD:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("PUSHKD ");
                             tempDouble = raf.readDouble();
@@ -436,7 +436,7 @@ public class DisASSembler {
                             break;
                             //que hacer con strings
                         case PUSHKS:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("PUSHKS ");
                             tempString =  raf.readUTF();
@@ -445,7 +445,7 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case POPI:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("POPI ");
                             dir = raf.readShort();
@@ -458,7 +458,7 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case POPD:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("POPD ");
                             dir = raf.readShort();
@@ -471,7 +471,7 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case POPS:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("POPS ");
                             dir = raf.readShort();
@@ -484,7 +484,7 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case POPAI:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("POPAI ");
                             dir = raf.readShort();
@@ -497,7 +497,7 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case POPAD:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("POPAD ");
                             dir = raf.readShort();
@@ -510,7 +510,7 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case POPAS:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("POPAS ");
                             dir = raf.readShort();
@@ -523,13 +523,13 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case POPIDX:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("POPIDX ");
                             bw.newLine();
                             break;
                         case READI:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("READI ");
                             dir = raf.readShort();
@@ -542,7 +542,7 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case READD:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("READD ");
                             dir = raf.readShort();
@@ -555,7 +555,7 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case READS:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("READS ");
                             dir = raf.readShort();
@@ -568,7 +568,7 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case READAI:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("READAI ");
                             dir = raf.readShort();
@@ -581,7 +581,7 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case READAD:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("READAD ");
                             dir = raf.readShort();
@@ -594,7 +594,7 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case READAS:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("READAS ");
                             dir = raf.readShort();
@@ -607,7 +607,7 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case PRTM:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("PRTM ");
                             tempString = raf.readUTF();
@@ -616,7 +616,7 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case PRTI:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("PRTI ");
                             dir = raf.readShort();
@@ -629,7 +629,7 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case PRTD:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("PRTD ");
                             dir = raf.readShort();
@@ -642,7 +642,7 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case PRTS:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("PRTS ");
                             dir = raf.readShort();
@@ -655,7 +655,7 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case PRTAI:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("PRTAI ");
                             dir = raf.readShort();
@@ -668,7 +668,7 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case PRTAD:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("PRTAD ");
                             dir = raf.readShort();
@@ -681,7 +681,7 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case PRTAS:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("PRTAS ");
                             dir = raf.readShort();
@@ -694,13 +694,13 @@ public class DisASSembler {
                             bw.newLine();
                             break;
                         case NL:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("NL ");
                             bw.newLine();
                             break;
                         case HALT:
-                            bw.write(Integer.toString(pc)+ ": ");
+                            bw.write("e" + Integer.toString(pc)+ ": ");
                             pc++;
                             bw.write("HALT ");
                             bw.newLine();
